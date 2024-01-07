@@ -2,7 +2,7 @@ package com.masterpiecebrouillon.brouillon.controller;
 
 import com.masterpiecebrouillon.brouillon.dto.LoginDTO;
 import com.masterpiecebrouillon.brouillon.dto.UserModelDTO;
-import com.masterpiecebrouillon.brouillon.response.LoginResponse;
+import com.masterpiecebrouillon.brouillon.repository.response.LoginResponse;
 import com.masterpiecebrouillon.brouillon.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

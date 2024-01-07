@@ -26,6 +26,7 @@ public class AppartementController {
     public ResponseEntity<List<AppartementModel>> getAppartements() {
         return ResponseEntity.ok(appartementService.getAppartements());
     }
+
     @PostMapping("/create")
     public ResponseEntity<AppartementModelDTO> createAppartement(@RequestBody AppartementModel appartementModel) {
         AppartementModel createdAppartement = appartementService.createNewAppartement(appartementModel);
@@ -33,20 +34,29 @@ public class AppartementController {
         return ResponseEntity.status(HttpStatus.CREATED).body((createdAppartementDTO));
     }
 
-    @PutMapping("/{appartement_id}")
-    public ResponseEntity<AppartementModelDTO> updateAppartement(@PathVariable("appartement_id") Integer appartementId, @RequestBody AppartementModel appartementModel) {
-        appartementModel.setId(appartementId);
-        AppartementModel updatedAppartement = appartementService.updateAppartement(appartementModel);
-        AppartementModelDTO appartementModelDTO = AppartementMapper.INSTANCE.convertDTO(updatedAppartement);
-        return ResponseEntity.ok((appartementModelDTO));
-    }
-    @DeleteMapping("/{appartement_id}")
-    public ResponseEntity<Boolean> deleteAppartement(@PathVariable("appartement_id") Integer appartementId) {
-        if(appartementRepository.existsById(appartementId)) {
-            appartementService.deleteAppartement(appartementId);
-            return ResponseEntity.ok(true);
-        } else {
+    @GetMapping("/appt/{id}")
+    public ResponseEntity<AppartementModel> getApptById(@PathVariable Long id) {
+        AppartementModel appartementModel = appartementService.getAppartementById(id);
+        if (appartementModel == null) {
             return ResponseEntity.notFound().build();
         }
+        return ResponseEntity.ok(appartementModel);
     }
+
+//    @PutMapping("/{appartement_id}")
+//    public ResponseEntity<AppartementModelDTO> updateAppartement(@PathVariable("appartement_id") Long appartementId, @RequestBody AppartementModel appartementModel) {
+//        appartementModel.setId(appartementId);
+//        AppartementModel updatedAppartement = appartementService.updateAppartement(appartementModel);
+//        AppartementModelDTO appartementModelDTO = AppartementMapper.INSTANCE.convertDTO(updatedAppartement);
+//        return ResponseEntity.ok((appartementModelDTO));
+//    }
+//    @DeleteMapping("/{appartement_id}")
+//    public ResponseEntity<Boolean> deleteAppartement(@PathVariable("appartement_id") Long appartementId) {
+//        if(appartementRepository.existsById(appartementId)) {
+//            appartementService.deleteAppartement(appartementId);
+//            return ResponseEntity.ok(true);
+//        } else {
+//            return ResponseEntity.notFound().build();
+//        }
+//    }
 }
