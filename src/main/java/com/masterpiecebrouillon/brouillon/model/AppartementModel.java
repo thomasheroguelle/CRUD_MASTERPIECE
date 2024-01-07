@@ -9,12 +9,12 @@ import jakarta.persistence.Id;
 public class AppartementModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
     private String title;
     private String description;
     private double price;
 
-    public AppartementModel(int id, String title, String description, double price) {
+    public AppartementModel(Long id, String title, String description, double price) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -24,11 +24,11 @@ public class AppartementModel {
     public AppartementModel() {
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

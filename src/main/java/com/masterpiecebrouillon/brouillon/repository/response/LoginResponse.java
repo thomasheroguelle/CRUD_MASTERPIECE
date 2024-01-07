@@ -1,4 +1,4 @@
-package com.masterpiecebrouillon.brouillon.response;
+package com.masterpiecebrouillon.brouillon.repository.response;
 
 public class LoginResponse {
     String message;

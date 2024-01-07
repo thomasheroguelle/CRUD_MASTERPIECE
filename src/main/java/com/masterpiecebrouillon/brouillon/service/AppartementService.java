@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class AppartementService {
     @Autowired
@@ -15,18 +17,27 @@ public class AppartementService {
     public AppartementModel createNewAppartement(AppartementModel appartementModel) {
         return appartementRepository.save(appartementModel);
     }
+
     public List<AppartementModel> getAppartements() {
         return appartementRepository.findAll();
     }
+
+    public AppartementModel getAppartementById(Long id) {
+        Optional<AppartementModel> optionalAppartement = appartementRepository.findById(id);
+        return optionalAppartement.orElse(null);
+    }
+
+
     public AppartementModel updateAppartement(AppartementModel appartementModel) {
         boolean appartementExists = this.appartementRepository.existsById(appartementModel.getId());
-        if(!appartementExists) {
+        if (!appartementExists) {
             throw new EntityNotFoundException("Appartement with ID " + appartementModel.getId() + " not found");
         }
         return appartementRepository.save(appartementModel);
     }
-    public void deleteAppartement(Integer id) {
-        if(appartementRepository.existsById(id)) {
+
+    public void deleteAppartement(Long id) {
+        if (appartementRepository.existsById(id)) {
             appartementRepository.deleteById(id);
         }
     }

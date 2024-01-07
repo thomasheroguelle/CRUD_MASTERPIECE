@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface AppartementRepository extends JpaRepository<AppartementModel, Integer > {
+public interface AppartementRepository extends JpaRepository<AppartementModel, Long > {
     public List<AppartementModel> findAll();
 }
