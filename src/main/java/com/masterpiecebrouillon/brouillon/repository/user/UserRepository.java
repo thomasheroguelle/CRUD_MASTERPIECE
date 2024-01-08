@@ -1,6 +1,6 @@
-package com.masterpiecebrouillon.brouillon.repository;
+package com.masterpiecebrouillon.brouillon.repository.user;
 
-import com.masterpiecebrouillon.brouillon.model.User;
+import com.masterpiecebrouillon.brouillon.model.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

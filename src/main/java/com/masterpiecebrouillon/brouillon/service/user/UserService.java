@@ -1,7 +1,7 @@
-package com.masterpiecebrouillon.brouillon.service;
+package com.masterpiecebrouillon.brouillon.service.user;
 
-import com.masterpiecebrouillon.brouillon.dto.LoginDTO;
-import com.masterpiecebrouillon.brouillon.dto.UserModelDTO;
+import com.masterpiecebrouillon.brouillon.dto.login.LoginDTO;
+import com.masterpiecebrouillon.brouillon.dto.user.UserModelDTO;
 import com.masterpiecebrouillon.brouillon.repository.response.LoginResponse;
 
 public interface UserService {
