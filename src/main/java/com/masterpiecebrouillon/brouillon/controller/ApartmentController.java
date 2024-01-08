@@ -1,8 +1,6 @@
 package com.masterpiecebrouillon.brouillon.controller;
 
-import com.masterpiecebrouillon.brouillon.mapper.AppartmentMapper;
 import com.masterpiecebrouillon.brouillon.model.ApartmentModel;
-import com.masterpiecebrouillon.brouillon.model.ApartmentModelDto;
 import com.masterpiecebrouillon.brouillon.repository.ApartmentRepository;
 import com.masterpiecebrouillon.brouillon.service.AppartementService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,40 +21,24 @@ public class ApartmentController {
     private ApartmentRepository apartmentRepository;
 
     @GetMapping
-    public ResponseEntity<List<ApartmentModel>> getAppartements() {
-        return ResponseEntity.ok(appartementService.getAppartements());
+    public ResponseEntity<List<ApartmentModel>> getApartments() {
+        List<ApartmentModel> getAppartmentsList = appartementService.getAppartements();
+        return new ResponseEntity<>(getAppartmentsList, HttpStatus.OK);
     }
 
     @PostMapping("/create")
-    public ResponseEntity<ApartmentModelDto> createAppartement(@RequestBody ApartmentModel apartmentModel) {
-        ApartmentModel createdAppartement = appartementService.createNewAppartement(apartmentModel);
-        ApartmentModelDto createdAppartementDTO = AppartmentMapper.INSTANCE.convertDTO(createdAppartement);
-        return ResponseEntity.status(HttpStatus.CREATED).body((createdAppartementDTO));
+    public ResponseEntity<ApartmentModel> createApartment(@RequestBody ApartmentModel apartmentModel) {
+        ApartmentModel createdApt = appartementService.createNewAppartement(apartmentModel);
+        return new ResponseEntity<>(createdApt, HttpStatus.CREATED);
     }
 
-    @GetMapping("/appt/{id}")
-    public ResponseEntity<ApartmentModel> getApptById(@PathVariable Long id) {
-        ApartmentModel apartmentModel = appartementService.getAppartementById(id);
-        if (apartmentModel == null) {
+    @GetMapping("/{id}")
+    public ResponseEntity<ApartmentModel> getApartmentById(@PathVariable Long id) {
+        ApartmentModel aptId = appartementService.getAppartementById(id);
+        if (aptId == null) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(apartmentModel);
+        return new ResponseEntity<>(aptId, HttpStatus.OK);
     }
 
-//    @PutMapping("/{appartement_id}")
-//    public ResponseEntity<AppartementModelDTO> updateAppartement(@PathVariable("appartement_id") Long appartementId, @RequestBody AppartementModel appartementModel) {
-//        appartementModel.setId(appartementId);
-//        AppartementModel updatedAppartement = appartementService.updateAppartement(appartementModel);
-//        AppartementModelDTO appartementModelDTO = AppartementMapper.INSTANCE.convertDTO(updatedAppartement);
-//        return ResponseEntity.ok((appartementModelDTO));
-//    }
-//    @DeleteMapping("/{appartement_id}")
-//    public ResponseEntity<Boolean> deleteAppartement(@PathVariable("appartement_id") Long appartementId) {
-//        if(appartementRepository.existsById(appartementId)) {
-//            appartementService.deleteAppartement(appartementId);
-//            return ResponseEntity.ok(true);
-//        } else {
-//            return ResponseEntity.notFound().build();
-//        }
-//    }
 }
