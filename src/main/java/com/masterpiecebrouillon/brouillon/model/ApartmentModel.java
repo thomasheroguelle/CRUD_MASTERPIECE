@@ -13,7 +13,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "apartment")
 public class ApartmentModel {
-    @Id
+    @Id // id qui s'auto incremente => on appelle ça les séquences
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "apartment_id", nullable = false)
     private Long id;
