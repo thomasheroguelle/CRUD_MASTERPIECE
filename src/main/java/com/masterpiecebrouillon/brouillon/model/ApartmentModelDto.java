@@ -3,9 +3,9 @@ package com.masterpiecebrouillon.brouillon.model;
 import lombok.Data;
 
 @Data
-public class AppartementModelDTO {
+public class ApartmentModelDto {
     private int id;
-    private String title;
+    private String address;
     private String description;
     private double price;
 }

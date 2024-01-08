@@ -1,9 +1,9 @@
 package com.masterpiecebrouillon.brouillon.controller;
 
-import com.masterpiecebrouillon.brouillon.mapper.AppartementMapper;
-import com.masterpiecebrouillon.brouillon.model.AppartementModel;
-import com.masterpiecebrouillon.brouillon.model.AppartementModelDTO;
-import com.masterpiecebrouillon.brouillon.repository.AppartementRepository;
+import com.masterpiecebrouillon.brouillon.mapper.AppartmentMapper;
+import com.masterpiecebrouillon.brouillon.model.ApartmentModel;
+import com.masterpiecebrouillon.brouillon.model.ApartmentModelDto;
+import com.masterpiecebrouillon.brouillon.repository.ApartmentRepository;
 import com.masterpiecebrouillon.brouillon.service.AppartementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,32 +15,32 @@ import java.util.List;
 @RestController
 @RequestMapping("api/v1/appt")
 @CrossOrigin(origins = "http://localhost:4200")
-public class AppartementController {
+public class ApartmentController {
 
     @Autowired
     private AppartementService appartementService;
     @Autowired
-    private AppartementRepository appartementRepository;
+    private ApartmentRepository apartmentRepository;
 
     @GetMapping
-    public ResponseEntity<List<AppartementModel>> getAppartements() {
+    public ResponseEntity<List<ApartmentModel>> getAppartements() {
         return ResponseEntity.ok(appartementService.getAppartements());
     }
 
     @PostMapping("/create")
-    public ResponseEntity<AppartementModelDTO> createAppartement(@RequestBody AppartementModel appartementModel) {
-        AppartementModel createdAppartement = appartementService.createNewAppartement(appartementModel);
-        AppartementModelDTO createdAppartementDTO = AppartementMapper.INSTANCE.convertDTO(createdAppartement);
+    public ResponseEntity<ApartmentModelDto> createAppartement(@RequestBody ApartmentModel apartmentModel) {
+        ApartmentModel createdAppartement = appartementService.createNewAppartement(apartmentModel);
+        ApartmentModelDto createdAppartementDTO = AppartmentMapper.INSTANCE.convertDTO(createdAppartement);
         return ResponseEntity.status(HttpStatus.CREATED).body((createdAppartementDTO));
     }
 
     @GetMapping("/appt/{id}")
-    public ResponseEntity<AppartementModel> getApptById(@PathVariable Long id) {
-        AppartementModel appartementModel = appartementService.getAppartementById(id);
-        if (appartementModel == null) {
+    public ResponseEntity<ApartmentModel> getApptById(@PathVariable Long id) {
+        ApartmentModel apartmentModel = appartementService.getAppartementById(id);
+        if (apartmentModel == null) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(appartementModel);
+        return ResponseEntity.ok(apartmentModel);
     }
 
 //    @PutMapping("/{appartement_id}")

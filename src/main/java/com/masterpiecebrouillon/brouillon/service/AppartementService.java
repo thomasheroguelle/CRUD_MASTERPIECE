@@ -1,7 +1,7 @@
 package com.masterpiecebrouillon.brouillon.service;
 
-import com.masterpiecebrouillon.brouillon.model.AppartementModel;
-import com.masterpiecebrouillon.brouillon.repository.AppartementRepository;
+import com.masterpiecebrouillon.brouillon.model.ApartmentModel;
+import com.masterpiecebrouillon.brouillon.repository.ApartmentRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,33 +12,33 @@ import java.util.Optional;
 @Service
 public class AppartementService {
     @Autowired
-    private AppartementRepository appartementRepository;
+    private ApartmentRepository apartmentRepository;
 
-    public AppartementModel createNewAppartement(AppartementModel appartementModel) {
-        return appartementRepository.save(appartementModel);
+    public ApartmentModel createNewAppartement(ApartmentModel apartmentModel) {
+        return apartmentRepository.save(apartmentModel);
     }
 
-    public List<AppartementModel> getAppartements() {
-        return appartementRepository.findAll();
+    public List<ApartmentModel> getAppartements() {
+        return apartmentRepository.findAll();
     }
 
-    public AppartementModel getAppartementById(Long id) {
-        Optional<AppartementModel> optionalAppartement = appartementRepository.findById(id);
+    public ApartmentModel getAppartementById(Long id) {
+        Optional<ApartmentModel> optionalAppartement = apartmentRepository.findById(id);
         return optionalAppartement.orElse(null);
     }
 
 
-    public AppartementModel updateAppartement(AppartementModel appartementModel) {
-        boolean appartementExists = this.appartementRepository.existsById(appartementModel.getId());
+    public ApartmentModel updateAppartement(ApartmentModel apartmentModel) {
+        boolean appartementExists = this.apartmentRepository.existsById(apartmentModel.getId());
         if (!appartementExists) {
-            throw new EntityNotFoundException("Appartement with ID " + appartementModel.getId() + " not found");
+            throw new EntityNotFoundException("Appartement with ID " + apartmentModel.getId() + " not found");
         }
-        return appartementRepository.save(appartementModel);
+        return apartmentRepository.save(apartmentModel);
     }
 
     public void deleteAppartement(Long id) {
-        if (appartementRepository.existsById(id)) {
-            appartementRepository.deleteById(id);
+        if (apartmentRepository.existsById(id)) {
+            apartmentRepository.deleteById(id);
         }
     }
 }
