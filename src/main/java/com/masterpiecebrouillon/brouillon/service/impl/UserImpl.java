@@ -1,11 +1,11 @@
 package com.masterpiecebrouillon.brouillon.service.impl;
 
-import com.masterpiecebrouillon.brouillon.dto.LoginDTO;
-import com.masterpiecebrouillon.brouillon.dto.UserModelDTO;
-import com.masterpiecebrouillon.brouillon.model.User;
-import com.masterpiecebrouillon.brouillon.repository.UserRepository;
+import com.masterpiecebrouillon.brouillon.dto.login.LoginDTO;
+import com.masterpiecebrouillon.brouillon.dto.user.UserModelDTO;
+import com.masterpiecebrouillon.brouillon.model.user.User;
+import com.masterpiecebrouillon.brouillon.repository.user.UserRepository;
 import com.masterpiecebrouillon.brouillon.repository.response.LoginResponse;
-import com.masterpiecebrouillon.brouillon.service.UserService;
+import com.masterpiecebrouillon.brouillon.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

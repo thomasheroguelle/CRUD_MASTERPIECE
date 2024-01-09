@@ -1,7 +1,7 @@
-package com.masterpiecebrouillon.brouillon.service;
+package com.masterpiecebrouillon.brouillon.service.apartment;
 
-import com.masterpiecebrouillon.brouillon.model.ApartmentModel;
-import com.masterpiecebrouillon.brouillon.repository.ApartmentRepository;
+import com.masterpiecebrouillon.brouillon.model.apartment.ApartmentModel;
+import com.masterpiecebrouillon.brouillon.repository.apartment.ApartmentRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,19 +10,19 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class AppartementService {
+public class ApartmentService {
     @Autowired
     private ApartmentRepository apartmentRepository;
 
-    public ApartmentModel createNewAppartement(ApartmentModel apartmentModel) {
+    public ApartmentModel createNewApartment(ApartmentModel apartmentModel) {
         return apartmentRepository.save(apartmentModel);
     }
 
-    public List<ApartmentModel> getAppartements() {
+    public List<ApartmentModel> getApartments() {
         return apartmentRepository.findAll();
     }
 
-    public ApartmentModel getAppartementById(Long id) {
+    public ApartmentModel getApartmentById(Long id) {
         Optional<ApartmentModel> optionalAppartement = apartmentRepository.findById(id);
         return optionalAppartement.orElse(null);
     }

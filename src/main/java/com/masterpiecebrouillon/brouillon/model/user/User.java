@@ -1,15 +1,25 @@
-package com.masterpiecebrouillon.brouillon.dto;
+package com.masterpiecebrouillon.brouillon.model.user;
 
-public class UserModelDTO {
+import jakarta.persistence.*;
+
+@Entity
+@Table(name="user")
+public class User {
+    @Id
+    @Column(name = "userId", length = 45)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int userId;
+    @Column(name = "userName", length = 255)
     private String userName;
+    @Column(name = "email", length = 255)
     private String email;
+    @Column(name = "password", length = 255)
     private String password;
 
-    public UserModelDTO() {
+    public User() {
     }
 
-    public UserModelDTO(int userId, String userName, String email, String password) {
+    public User(int userId, String userName, String email, String password) {
         this.userId = userId;
         this.userName = userName;
         this.email = email;
@@ -48,3 +58,5 @@ public class UserModelDTO {
         this.password = password;
     }
 }
+
+

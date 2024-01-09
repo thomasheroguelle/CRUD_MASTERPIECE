@@ -1,4 +1,4 @@
-package com.masterpiecebrouillon.brouillon.dto;
+package com.masterpiecebrouillon.brouillon.dto.login;
 
 public class LoginDTO {
     private String email;

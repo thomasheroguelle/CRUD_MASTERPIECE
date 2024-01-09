@@ -1,4 +1,4 @@
-package com.masterpiecebrouillon.brouillon.model;
+package com.masterpiecebrouillon.brouillon.dto.apartment;
 
 import lombok.Data;
 

@@ -1,14 +1,14 @@
-package com.masterpiecebrouillon.brouillon.mapper;
+package com.masterpiecebrouillon.brouillon.mapper.apartment;
 
-import com.masterpiecebrouillon.brouillon.model.ApartmentModel;
-import com.masterpiecebrouillon.brouillon.model.ApartmentModelDto;
+import com.masterpiecebrouillon.brouillon.model.apartment.ApartmentModel;
+import com.masterpiecebrouillon.brouillon.dto.apartment.ApartmentModelDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 @Mapper
-public interface AppartmentMapper {
+public interface ApartmentMapper {
 
-    AppartmentMapper INSTANCE = Mappers.getMapper(AppartmentMapper.class);
+    ApartmentMapper INSTANCE = Mappers.getMapper(ApartmentMapper.class);
 
     @Mapping(source = "id", target = "id")
     @Mapping(source = "address", target = "address")
